@@ -18,6 +18,13 @@ public class Dictionary {
 		// TODO Auto-generated method stub
 		list.add(newWord);
 	}
+	public void add (String word_target,String word_explain)
+	{
+		Word word = new Word ( word_target, word_explain);
+		list.add(word);
+		
+				
+	}
 	public ArrayList<Word> getList()
 	{
 		return list;

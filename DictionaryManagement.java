@@ -7,6 +7,7 @@ public class DictionaryManagement {
 	public static void insertFromCommandline(Dictionary dtn)
 	{
 		Scanner sc = new Scanner (System.in);
+		System.out.println("Mời bạn nhập số từ ");
 		int numberWord = Integer.parseInt(sc.nextLine());
 		for (int i = 0; i<numberWord ;i++)
 		{
