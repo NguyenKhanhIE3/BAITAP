@@ -1,4 +1,4 @@
-package community.com;
+﻿package community.com;
 
 
 import java.util.Scanner;
@@ -8,6 +8,7 @@ public class DictionaryManagement {
 	{
 		Scanner sc = new Scanner (System.in);
 		System.out.println("Mời bạn nhập số từ ");
+		int numberWord =sc.nextInt();
 		for (int i = 0; i<numberWord ;i++)
 		{
 			String word_target = sc.nextLine();
