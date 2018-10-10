@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class DictionaryCommandline {
 
 	DictionaryManagement dict =new DictionaryManagement();
+	//hàm hiển thị kết quả danh sách dữ liệu từ điển trên màn hình 
 	public  void showAllWords (Dictionary dtn)
 	
 	{	System.out.println("No    |  English           |     Vietnamese");
@@ -78,7 +79,8 @@ public  void dictionaryAdvanced (Dictionary dtn) throws IOException
 		
 	
 	
-
+//cải tiến 2  
+//tìm kiếm từ 
 public  void  dictionarySearcher(Dictionary dtn)
 {
 	System.out.println("Mời bạn nhập từ  :");

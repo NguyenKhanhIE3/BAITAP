@@ -7,7 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class DictionaryManagement {
-
+	
+	//hàm nhập dữ liệu từ vựng từ bàn phím 
+	
 	public  void insertFromCommandline(Dictionary dtn)
 	{
 		Scanner sc = new Scanner (System.in);
@@ -25,6 +27,8 @@ public class DictionaryManagement {
 		}
 		
 	}
+	// cải tiến 1
+	//hàm nhập dữ liệu từ điển từ tệp 
 	public  void insertFromFile(Dictionary dtn ) throws FileNotFoundException 
 	{
 	
@@ -42,6 +46,8 @@ public class DictionaryManagement {
 		sc.close();
 		
 	}
+	//cải tiến 2 
+	// hàm xóa từ 
 	public   void removeFromCommandLine(Dictionary dtn)
 	{
 		ArrayList<Word> list = dtn.getList();
@@ -69,6 +75,8 @@ public class DictionaryManagement {
 		
 		
 	}
+	//cải tiến 2 
+	//hàm sửa từ 
 	public void replaceCommandLine( Dictionary dtn )
 	{
 		ArrayList<Word> list = dtn.getList();
@@ -112,6 +120,8 @@ public class DictionaryManagement {
 		
 		
 	}
+	//cải tiến 2 
+	//hàm thêm từ 
 	public void addWord (Dictionary dtn)
 	{
 		ArrayList <Word> list = dtn.getList();
@@ -130,6 +140,8 @@ public class DictionaryManagement {
 		
 		});
 	}
+	//cải tiến 1  
+	//hàm tra cứu từ điển bằng dòng lệnh 
 	public  void dictionaryLookup (Dictionary dtn)
 	{	
 		ArrayList<Word> list = dtn.getList();
@@ -165,6 +177,8 @@ public class DictionaryManagement {
 		
 		
 }
+	//hàm xuất dữ liệu ra file 
+	
 	public void dictionaryExportToFile (Dictionary dtn)
 	{
 		ArrayList<Word> wordList = dtn.getList();
