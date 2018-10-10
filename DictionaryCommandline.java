@@ -9,14 +9,20 @@ public class DictionaryCommandline {
 	DictionaryManagement dict =new DictionaryManagement();
 	public  void showAllWords (Dictionary dtn)
 	
-	{	System.out.println("No\t| English\t|Vietnamese");
-		for (int id =0 ;id<dtn.getList().size();id++)
-		{
-			Word word = dtn.getList().get(id);
-			System.out.println((id+1) +"\t|"+word.getWord_Target()+"\t\t|"+word.getWord_Explain());
-			
+	{	//System.out.println("No    |  English           |     Vietnamese");
+		//for (int id =0 ;id<dtn.getList().size();id++)
+		//{
+			//Word word = dtn.getList().get(id);
+			//System.out.printf("%-6d|  %-18s|%s\n",id+1,word.getWord_Target(),word.getWord_Explain());
+		//}
+		ArrayList<Word> list = dtn.getList();
+		System.out.println("No"+"\t"+"| "+String.format("%-20s","English")+"|       Vietnamese");
+		for(int id=0;id<list.size();id++){
+			System.out.println((id+1)+"\t"+"| "+String.format("%-20s",list.get(id).getWord_Target())+"| "+list.get(id).getWord_Explain());
 		}
 	}
+		
+	
 		public  void dictionaryBasic(Dictionary dtn)
 	{
 			dict.insertFromCommandline(dtn);
@@ -28,8 +34,55 @@ public  void dictionaryAdvanced (Dictionary dtn) throws IOException
 {
 	dict.insertFromFile(dtn);
 	showAllWords(dtn);
-	dict.dictionaryLookup(dtn);
+	Scanner input =new Scanner (System.in);
+	do
+	{
+		System.out.println("============MENU============");
+		System.out.println("1.Xóa từ ");
+		System.out.println("2.Thêm từ ");
+		System.out.println("3.Sửa từ ");
+		System.out.println("4.Tìm kiếm từ ");
+		System.out.println("5.Tìm Kiếm từ bắt đầu bằng  ");
+		System.out.println("6.Exit");
+		System.out.println("============================");
+		System.out.println("Mời bạn chọn : ");
+		int chon = Integer.parseInt (input.nextLine());
+		
+		switch (chon)
+		{
+		case 1:
+			dict.removeFromCommandLine(dtn);
+			showAllWords(dtn);
+			break;
+		case 2 :
+			dict.addWord(dtn);
+			showAllWords(dtn);
+			break;
+		case 3 :
+			dict.replaceCommandLine(dtn);
+			showAllWords(dtn);
+			break;
+		case 4 :
+			dict.dictionaryLookup(dtn);
+			break;
+		case 5 :
+			dictionarySearcher(dtn);
+			break;
+		case 6 :
+			System.out.println("Thoát menu");
+			System.exit(0);
+			default :break;
+		
+			
+		}
+	}
+	while (true );
 }
+	
+		
+	
+	
+
 public  void  dictionarySearcher(Dictionary dtn)
 {
 	System.out.println("Mời bạn nhập từ  :");
@@ -39,7 +92,7 @@ public  void  dictionarySearcher(Dictionary dtn)
 	for (int i =0 ;i<List.size();i++)
 	{
 		if (List.get(i).getWord_Target().contains(line))
-			System.out.println(List.get(i).getWord_Target());
+			System.out.printf(" %-18s|%s\n",List.get(i).getWord_Target(),List.get(i).getWord_Explain());
 	}
 	
 	

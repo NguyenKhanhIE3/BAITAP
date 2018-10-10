@@ -9,15 +9,15 @@ public class Main {
 		Dictionary dtn = new Dictionary();
 		DictionaryCommandline diccom  =new DictionaryCommandline();
 		DictionaryManagement dicman=new DictionaryManagement();
-		
-		diccom.dictionaryAdvanced(dtn);
+	
 		//diccom.dictionaryBasic(dtn);
 		
 		//dicman.removeFromCommandLine(dtn);
 		//diccom.dictionarySearcher(dtn);
-		dicman.dictionaryLookup(dtn);
-		dicman.removeFromCommandLine(dtn);
+
 		diccom.dictionaryAdvanced(dtn);
+		dicman.dictionaryExportToFile(dtn);
+		
 		
 	}
 
