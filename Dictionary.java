@@ -13,9 +13,8 @@ public class Dictionary {
 	{
 		this.list = list;
 	}
-
-	public void add(Word newWord) {
-		// TODO Auto-generated method stub
+	public void add (Word newWord)
+	{
 		list.add(newWord);
 	}
 	public void add (String word_target,String word_explain)

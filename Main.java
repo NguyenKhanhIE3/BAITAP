@@ -16,7 +16,7 @@ public class Main {
 		//diccom.dictionarySearcher(dtn);
 
 		diccom.dictionaryAdvanced(dtn);
-		dicman.dictionaryExportToFile(dtn);
+		//dicman.dictionaryExportToFile(dtn);
 		
 		
 	}

@@ -2,6 +2,7 @@ package community.com;
 import java.util.*;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -24,10 +25,10 @@ public class DictionaryManagement {
 		}
 		
 	}
-	public  void insertFromFile(Dictionary dtn ) 
-			throws IOException 
+	public  void insertFromFile(Dictionary dtn ) throws FileNotFoundException 
 	{
-		FileInputStream fis = new FileInputStream("dictionaries.txt");
+	
+		FileInputStream fis  = new FileInputStream("dict.txt");
 		Scanner sc = new Scanner (fis);
 		while (sc.hasNext())
 		{
@@ -85,8 +86,9 @@ public class DictionaryManagement {
 			if (list.get(middle ).getWord_Target().compareTo(replace_Word)==0 )
 			{
 				
-				list.get(middle).setWord_Target(word_target);
-				list.get(middle).setWord_Explain(word_explain);
+				list.remove(list.get(middle));
+				Word newWord = new Word (word_target,word_explain);
+				list.add(newWord);
 				break;
 				
 				
@@ -99,6 +101,15 @@ public class DictionaryManagement {
 				
 		}
 		while(left <= right);
+		Collections.sort(list, new Comparator<Word>() {
+			@Override
+			public  int compare(Word w1 ,Word w2)
+			{
+				return (w1.getWord_Target().compareTo(w2.getWord_Target()));
+			}
+		
+		});
+		
 		
 	}
 	public void addWord (Dictionary dtn)

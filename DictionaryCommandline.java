@@ -9,17 +9,13 @@ public class DictionaryCommandline {
 	DictionaryManagement dict =new DictionaryManagement();
 	public  void showAllWords (Dictionary dtn)
 	
-	{	//System.out.println("No    |  English           |     Vietnamese");
-		//for (int id =0 ;id<dtn.getList().size();id++)
-		//{
-			//Word word = dtn.getList().get(id);
-			//System.out.printf("%-6d|  %-18s|%s\n",id+1,word.getWord_Target(),word.getWord_Explain());
-		//}
-		ArrayList<Word> list = dtn.getList();
-		System.out.println("No"+"\t"+"| "+String.format("%-20s","English")+"|       Vietnamese");
-		for(int id=0;id<list.size();id++){
-			System.out.println((id+1)+"\t"+"| "+String.format("%-20s",list.get(id).getWord_Target())+"| "+list.get(id).getWord_Explain());
+	{	System.out.println("No    |  English           |     Vietnamese");
+		for (int id =0 ;id<dtn.getList().size();id++)
+		{
+			Word word = dtn.getList().get(id);
+			System.out.printf("%-6d|  %-18s|%s\n",id+1,word.getWord_Target(),word.getWord_Explain());
 		}
+
 	}
 		
 	
