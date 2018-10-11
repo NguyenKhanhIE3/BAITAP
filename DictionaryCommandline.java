@@ -14,7 +14,7 @@ public class DictionaryCommandline {
 		for (int id =0 ;id<dtn.getList().size();id++)
 		{
 			Word word = dtn.getList().get(id);
-			System.out.printf("%-6d|  %-18s|%s\n",id+1,word.getWord_Target(),word.getWord_Explain());
+			System.out.printf("%-6d|  %-22s|%-2s\n",id+1,word.getWord_Target(),word.getWord_Explain());
 		}
 
 	}
@@ -89,7 +89,7 @@ public  void  dictionarySearcher(Dictionary dtn)
 	List = dtn.getList();
 	for (int i =0 ;i<List.size();i++)
 	{
-		if (List.get(i).getWord_Target().contains(line))
+		if (List.get(i).getWord_Target().startsWith(line))
 			System.out.printf(" %-18s|%s\n",List.get(i).getWord_Target(),List.get(i).getWord_Explain());
 	}
 	

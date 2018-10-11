@@ -17,7 +17,7 @@ public class DictionaryManagement {
 		int numberWord = Integer.parseInt(sc.nextLine());
 		for (int i = 0; i<numberWord ;i++)
 		{
-			String word_target = sc.next();
+			String word_target = sc.nextLine();
 			String word_explain = sc.nextLine();
 			Word newWord = new Word (word_target ,word_explain );
 			dtn.add(newWord);
@@ -32,17 +32,37 @@ public class DictionaryManagement {
 	public  void insertFromFile(Dictionary dtn ) throws FileNotFoundException 
 	{
 	
-		FileInputStream fis  = new FileInputStream("dict.txt");
-		Scanner sc = new Scanner (fis);
+		FileInputStream fis = new FileInputStream("dict.txt");
+		Scanner sc= new Scanner (fis);
+		String s ;
 		while (sc.hasNext())
 		{
-			String word_target = sc.next();
-			String word_explain =sc.nextLine();
-			Word newWord = new Word (word_target,word_explain);
-			dtn.add(newWord);
+		
+			s =sc.nextLine();
+			for(int i=0;i<s.length();i++)
+			{
+				if (s.charAt(i)=='\t')
+				{
+					Word newWord = new Word (s.substring(0, i),s.substring(i+1));
+					dtn.add(newWord);
+					break;
+				}
+				
+					
+			}
+			
 			
 			
 		}
+		ArrayList<Word >list = dtn.getList();
+		Collections.sort(list, new Comparator<Word>() {
+			@Override
+			public  int compare(Word w1 ,Word w2)
+			{
+				return (w1.getWord_Target().compareTo(w2.getWord_Target()));
+			}
+		
+		});
 		sc.close();
 		
 	}
@@ -56,7 +76,7 @@ public class DictionaryManagement {
 	
 		String delete_Word= new Scanner (System.in).nextLine();
 		int left = 0,right = (list.size())-1;
-		do
+		while (left<=right)
 		{
 			int middle = (left +right)/2;
 			if (list.get(middle ).getWord_Target().compareTo(delete_Word)==0 )
@@ -70,7 +90,7 @@ public class DictionaryManagement {
 					left = middle +1;
 				
 		}
-		while(left <= right);
+		
 		
 		
 		
@@ -88,7 +108,7 @@ public class DictionaryManagement {
 		System.out.println("Nghĩa của từ :");
 		String word_explain =new Scanner (System.in).nextLine();
 		int left = 0,right = (list.size())-1;
-		do
+		while (left<=right)
 		{
 			int middle = (left +right)/2;
 			if (list.get(middle ).getWord_Target().compareTo(replace_Word)==0 )
@@ -108,7 +128,7 @@ public class DictionaryManagement {
 					left = middle +1;
 				
 		}
-		while(left <= right);
+
 		Collections.sort(list, new Comparator<Word>() {
 			@Override
 			public  int compare(Word w1 ,Word w2)
@@ -152,10 +172,10 @@ public class DictionaryManagement {
 		String lookup = scn.nextLine();
 		
 		int middle,left = 0,right = (list.size())-1;
-		do
+		while (left <=right)
 		{
 			 middle = (left +right)/2;
-			if (list.get(middle ).getWord_Target().compareTo(lookup )==0 )
+			if (list.get(middle ).getWord_Target().compareTo(lookup)==0 )
 			{
 				
 				System.out.println("Nghĩa của từ là :");
@@ -169,7 +189,7 @@ public class DictionaryManagement {
 					left = middle +1;
 				
 		}
-		while(left <= right);
+		
 	
 		
 		
