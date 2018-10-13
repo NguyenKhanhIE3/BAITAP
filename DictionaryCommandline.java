@@ -35,29 +35,26 @@ public  void dictionaryAdvanced (Dictionary dtn) throws IOException
 	do
 	{
 		System.out.println("============MENU============");
-		System.out.println("1.Xóa từ ");
-		System.out.println("2.Thêm từ ");
-		System.out.println("3.Sửa từ ");
-		System.out.println("4.Tìm kiếm từ ");
-		System.out.println("5.Tìm Kiếm từ bắt đầu bằng  ");
+		System.out.println("1.Xoa tu");
+		System.out.println("2.Them tu");
+		System.out.println("3.Sua tu ");
+		System.out.println("4.Tim kiem tu ");
+		System.out.println("5.Tim kiem tu bat dau bang  ");
 		System.out.println("6.Exit");
 		System.out.println("============================");
-		System.out.println("Mời bạn chọn : ");
+		System.out.println("Moi ban chon : ");
 		int chon = Integer.parseInt (input.nextLine());
 		
 		switch (chon)
 		{
 		case 1:
 			dict.removeFromCommandLine(dtn);
-			showAllWords(dtn);
 			break;
 		case 2 :
 			dict.addWord(dtn);
-			showAllWords(dtn);
 			break;
 		case 3 :
 			dict.replaceCommandLine(dtn);
-			showAllWords(dtn);
 			break;
 		case 4 :
 			dict.dictionaryLookup(dtn);
@@ -66,9 +63,9 @@ public  void dictionaryAdvanced (Dictionary dtn) throws IOException
 			dictionarySearcher(dtn);
 			break;
 		case 6 :
-			System.out.println("Thoát menu");
+			System.out.println("Thoat menu");
 			System.exit(0);
-			default :break;
+		default :break;
 		
 			
 		}
@@ -83,7 +80,7 @@ public  void dictionaryAdvanced (Dictionary dtn) throws IOException
 //tìm kiếm từ 
 public  void  dictionarySearcher(Dictionary dtn)
 {
-	System.out.println("Mời bạn nhập từ  :");
+	System.out.println("Moi ban nhap tu  :");
 	String line = new Scanner (System.in).nextLine();
 	ArrayList<Word> List = new ArrayList<>();
 	List = dtn.getList();

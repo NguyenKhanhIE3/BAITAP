@@ -72,7 +72,7 @@ public class DictionaryManagement {
 	{
 		ArrayList<Word> list = dtn.getList();
 		
-		System.out.println("Mời bạn nhập từ  muốn xóa :");
+		System.out.println("Moi ban nhap tu muon xoa  :");
 	
 		String delete_Word= new Scanner (System.in).nextLine();
 		int left = 0,right = (list.size())-1;
@@ -101,11 +101,11 @@ public class DictionaryManagement {
 	{
 		ArrayList<Word> list = dtn.getList();
 		
-		System.out.println("Mời bạn nhập từ cần sửa :");
+		System.out.println("Moi ban nhap tu can sua  :");
 		String  replace_Word = new Scanner (System.in).nextLine();
-		System.out.println("Từ tiếng anh thay thế :");
+		System.out.println("Tu tieng anh thay the :");
 		String word_target = new Scanner(System .in).nextLine();
-		System.out.println("Nghĩa của từ :");
+		System.out.println("Nghia cua tu :");
 		String word_explain =new Scanner (System.in).nextLine();
 		int left = 0,right = (list.size())-1;
 		while (left<=right)
@@ -145,9 +145,9 @@ public class DictionaryManagement {
 	public void addWord (Dictionary dtn)
 	{
 		ArrayList <Word> list = dtn.getList();
-		System.out.println("Mời bạn nhập từ cần thêm  :");
+		System.out.println("Moi ban nhap tu can them  :");
 		String  add_Word = new Scanner (System.in).nextLine();
-		System.out.println("Nghĩa của từ :");
+		System.out.println("Nghia cua tu :");
 		String word_explain = new Scanner (System.in).nextLine();
 		Word newWord =new Word (add_Word,word_explain);
 		dtn.add(newWord);
@@ -167,7 +167,7 @@ public class DictionaryManagement {
 		ArrayList<Word> list = dtn.getList();
 		
 		
-		System.out.println("Mời bạn nhập từ :");
+		System.out.println("Moi ban nhap tu:");
 		Scanner scn = new Scanner (System.in);
 		String lookup = scn.nextLine();
 		
@@ -178,7 +178,7 @@ public class DictionaryManagement {
 			if (list.get(middle ).getWord_Target().compareTo(lookup)==0 )
 			{
 				
-				System.out.println("Nghĩa của từ là :");
+				System.out.println("Nghia cua tu :");
 				System.out.println(list.get(middle).getWord_Explain());
 				break;
 			}
