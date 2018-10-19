@@ -1,220 +1,111 @@
-package community.com;
-import java.util.*;
+package folder;
 
-import java.io.FileInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
+import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class DictionaryManagement {
-	
-	//hàm nhập dữ liệu từ vựng từ bàn phím 
-	
-	public  void insertFromCommandline(Dictionary dtn)
-	{
-		Scanner sc = new Scanner (System.in);
-		System.out.println("Mời bạn nhập số từ ");
-		int numberWord = Integer.parseInt(sc.nextLine());
-		for (int i = 0; i<numberWord ;i++)
-		{
-			String word_target = sc.nextLine();
-			String word_explain = sc.nextLine();
-			Word newWord = new Word (word_target ,word_explain );
-			dtn.add(newWord);
-		
-					
-			
-		}
-		
-	}
-	// cải tiến 1
-	//hàm nhập dữ liệu từ điển từ tệp 
-	public  void insertFromFile(Dictionary dtn ) throws FileNotFoundException 
-	{
-	
-		FileInputStream fis = new FileInputStream("dict.txt");
-		Scanner sc= new Scanner (fis);
-		String s ;
-		while (sc.hasNext())
-		{
-		
-			s =sc.nextLine();
-			for(int i=0;i<s.length();i++)
-			{
-				if (s.charAt(i)=='\t')
-				{
-					Word newWord = new Word (s.substring(0, i),s.substring(i+1));
-					dtn.add(newWord);
-					break;
-				}
-				
-					
-			}
-			
-			
-			
-		}
-		ArrayList<Word >list = dtn.getList();
-		Collections.sort(list, new Comparator<Word>() {
-			@Override
-			public  int compare(Word w1 ,Word w2)
-			{
-				return (w1.getWord_Target().compareTo(w2.getWord_Target()));
-			}
-		
-		});
-		sc.close();
-		
-	}
-	//cải tiến 2 
-	// hàm xóa từ 
-	public   void removeFromCommandLine(Dictionary dtn)
-	{
-		ArrayList<Word> list = dtn.getList();
-		
-		System.out.println("Moi ban nhap tu muon xoa  :");
-	
-		String delete_Word= new Scanner (System.in).nextLine();
-		int left = 0,right = (list.size())-1;
-		while (left<=right)
-		{
-			int middle = (left +right)/2;
-			if (list.get(middle ).getWord_Target().compareTo(delete_Word)==0 )
-			{
-				list.remove(list.get(middle));
-			}
-			else
-				if (list.get(middle).getWord_Target().compareTo(delete_Word)>0)
-					right = middle -1 ;
-				else
-					left = middle +1;
-				
-		}
-		
-		
-		
-		
-	}
-	//cải tiến 2 
-	//hàm sửa từ 
-	public void replaceCommandLine( Dictionary dtn )
-	{
-		ArrayList<Word> list = dtn.getList();
-		
-		System.out.println("Moi ban nhap tu can sua  :");
-		String  replace_Word = new Scanner (System.in).nextLine();
-		System.out.println("Tu tieng anh thay the :");
-		String word_target = new Scanner(System .in).nextLine();
-		System.out.println("Nghia cua tu :");
-		String word_explain =new Scanner (System.in).nextLine();
-		int left = 0,right = (list.size())-1;
-		while (left<=right)
-		{
-			int middle = (left +right)/2;
-			if (list.get(middle ).getWord_Target().compareTo(replace_Word)==0 )
-			{
-				
-				list.remove(list.get(middle));
-				Word newWord = new Word (word_target,word_explain);
-				list.add(newWord);
-				break;
-				
-				
-			}
-			else
-				if (list.get(middle).getWord_Target().compareTo(replace_Word)>0)
-					right = middle -1 ;
-				else
-					left = middle +1;
-				
-		}
-
-		Collections.sort(list, new Comparator<Word>() {
-			@Override
-			public  int compare(Word w1 ,Word w2)
-			{
-				return (w1.getWord_Target().compareTo(w2.getWord_Target()));
-			}
-		
-		});
-		
-		
-	}
-	//cải tiến 2 
-	//hàm thêm từ 
-	public void addWord (Dictionary dtn)
-	{
-		ArrayList <Word> list = dtn.getList();
-		System.out.println("Moi ban nhap tu can them  :");
-		String  add_Word = new Scanner (System.in).nextLine();
-		System.out.println("Nghia cua tu :");
-		String word_explain = new Scanner (System.in).nextLine();
-		Word newWord =new Word (add_Word,word_explain);
-		dtn.add(newWord);
-		Collections.sort(list, new Comparator<Word>() {
-			@Override
-			public  int compare(Word w1 ,Word w2)
-			{
-				return (w1.getWord_Target().compareTo(w2.getWord_Target()));
-			}
-		
-		});
-	}
-	//cải tiến 1  
-	//hàm tra cứu từ điển bằng dòng lệnh 
-	public  void dictionaryLookup (Dictionary dtn)
-	{	
-		ArrayList<Word> list = dtn.getList();
-		
-		
-		System.out.println("Moi ban nhap tu:");
-		Scanner scn = new Scanner (System.in);
-		String lookup = scn.nextLine();
-		
-		int middle,left = 0,right = (list.size())-1;
-		while (left <=right)
-		{
-			 middle = (left +right)/2;
-			if (list.get(middle ).getWord_Target().compareTo(lookup)==0 )
-			{
-				
-				System.out.println("Nghia cua tu :");
-				System.out.println(list.get(middle).getWord_Explain());
-				break;
-			}
-			else
-				if (list.get(middle).getWord_Target().compareTo(lookup)>0)
-					right = middle -1 ;
-				else
-					left = middle +1;
-				
-		}
-		
-	
-		
-		
-		
-		
-		
+ 
+    Dictionary myDictionary = new Dictionary();
+    /**
+     * This method use insert list word from command line
+     * No parameter and return void
+     */
+    public void insertFromCommandLine() {
+        
+        Scanner scan = new Scanner(System.in);
+        int numberOfWord;
+        System.out.println("Nhap so tu:");
+        numberOfWord = Integer.parseInt(scan.nextLine());
+        
+        for (int i=0; i<numberOfWord; i++) {
+            Word _word = new Word();
+            System.out.print(i+1 + "\nWord is: ");
+            _word.setWord_target(scan.nextLine());
+            System.out.print("Mean is: ");
+            _word.setWord_explain(scan.nextLine());
+            myDictionary.listWord.add(_word);
+        }
+    }
+    /**
+     * This method use insert list Word from my file text
+     * No parameter and return void
+     * @throws FileNotFoundException 
+     */
+    public void insertFromFile() throws FileNotFoundException {
+        
+        Scanner scan = new Scanner(new File("dictionaries.txt"));
+        while (scan.hasNext()){
+            String stringWord = scan.nextLine();
+                //trong file co dinh dang: phan cach giua tu va giai nghia la dau tab
+                // Su dung phương thuc useDelimiter() de dinh dang nhap vao
+                Scanner s = new Scanner(stringWord).useDelimiter("s*\ts*");
+            Word _word = new Word();
+            _word.setWord_target(s.next());
+            _word.setWord_explain(s.next());
+            myDictionary.listWord.add(_word);
+        }
+    }
+    /**
+     * find the word in the dictionary and show it's mean
+     * return void
+     */
+    public void dictionaryLookup(){
+        String a ;
+        System.out.println("Ban hay nhap tu muon tra:");
+        Scanner scan = new Scanner(System.in);
+        a= scan.nextLine();
+        for (Word i: myDictionary.listWord) {
+            if (i.getWord_target().equals(a)) {
+                System.out.println(a + " means :" + i.getWord_explain());
+            }
+        }
+        
+    }
+    /**
+     * The method puts all the word 
+     * of current dictionary in File "DictionaryNow.txt"
+     * @throws java.io.FileNotFoundException
+     */
+    public void dictionaryExportToFile() throws FileNotFoundException, IOException {
+        FileOutputStream fout = new FileOutputStream("dictionaries.txt");
+        BufferedOutputStream bout = new BufferedOutputStream(fout);
+        
+        for (Word i: myDictionary.listWord) {
+            String line = i.getWord_target()+"\t" + i.getWord_explain();
+                bout.write(line.getBytes());
+                bout.write(System.lineSeparator().getBytes()) ;
+            
+        }
+        bout.close();
+    }
+     //Ham them mot tu tu command line
+    public void insertWord() {
+        System.out.println("Nhap tu can them vao theo dinh dang word_target \\t word_explain:");
+        Scanner scan = new Scanner(System.in);
+        String stringWord = scan.nextLine();
+        Scanner s = new Scanner(stringWord).useDelimiter("s*\ts*");
+                String spelling = s.next();
+                String explain = s.next();
+        Word newWord = new Word(spelling, explain);
+        myDictionary.listWord.add(newWord);
+    }
+    //Ham xoa mot tu tu command line
+    public void removeWord(String Word_target) {
+        for (Word i: myDictionary.listWord) {
+            if (i.getWord_target().equals(Word_target)) {
+                myDictionary.listWord.remove(i);
+            }
+        }
+    }
+    //Ham sua du lieu tu command line
+    public void fixWord() {
+        
+    }
 }
-	//hàm xuất dữ liệu ra file 
-	
-	public void dictionaryExportToFile (Dictionary dtn)
-	{
-		ArrayList<Word> wordList = dtn.getList();
-		try {
-			FileWriter fw = new FileWriter("Output.txt");
-			for (int i = 0;i<wordList.size();i++)
-			{
-				fw.write(wordList.get(i).getWord_Target()+"\t"+wordList.get(i).getWord_Explain());
-				fw.write("\n");
-			}
-			fw.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-}
-

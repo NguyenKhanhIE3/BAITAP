@@ -1,24 +1,15 @@
-package community.com;
 
+package folder;
+
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		Dictionary dtn = new Dictionary();
-		DictionaryCommandline diccom  =new DictionaryCommandline();
-		DictionaryManagement dicman=new DictionaryManagement();
-	
-		//diccom.dictionaryBasic(dtn);
-		
-		//dicman.removeFromCommandLine(dtn);
-		//diccom.dictionarySearcher(dtn);
-
-		diccom.dictionaryAdvanced(dtn);
-		//dicman.dictionaryExportToFile(dtn);
-		
-		
-	}
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        DictionaryCommandLine newCommandLine = new DictionaryCommandLine();
+        newCommandLine.dictionaryBasic();
+        newCommandLine.dictionaryAdvanced();
+    }
 
 }
